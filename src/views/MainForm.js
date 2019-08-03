@@ -73,8 +73,10 @@ const MainForm = () => {
     {({values, errors, touched, handleChange, handleBlur,
       handleSubmit}) => (
           <Form>
-            <MyInputField name="franco" formik={{values, errors, touched, handleChange, handleBlur,handleSubmit}}/>
             <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <MyInputField name="franco" formik={{values, errors, touched, handleChange, handleBlur,handleSubmit}}/>
+              </Grid>
               <Grid item xs={6}>
             <FormGroup>
             <TextField
