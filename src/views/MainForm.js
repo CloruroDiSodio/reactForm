@@ -9,19 +9,7 @@ import Terms from '../components/Terms'
 
 import SignupSchema from '../utils/validationSchema'
 
-const MyInputField = props => <FormGroup><TextField
-  variant="outlined"
-  label={props.name.toUpperCase()}
-  id={props.name}
-  name={props.name}
-  value={props.formik.values[props.name]}
-  onChange={props.formik.handleChange}
-  onBlur={props.formik.handleBlur}
-  error={typeof props.formik.errors.nome !== 'undefined'}
-/>
-{typeof props.formik.errors.nome !== 'undefined' && <FormHelperText>{props.formik.errors.nome}</FormHelperText>}
-</FormGroup>
-
+import MyInputField from '../components/MyInputField'
 
 
 
@@ -60,7 +48,6 @@ const MainForm = () => {
       cap:'',
       cellulare:'',
       newsletter:'',
-      franco: '',
       terms: false
     }}
 
@@ -74,56 +61,9 @@ const MainForm = () => {
       handleSubmit}) => (
           <Form>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <MyInputField name="franco" formik={{values, errors, touched, handleChange, handleBlur,handleSubmit}}/>
-              </Grid>
-              <Grid item xs={6}>
-            <FormGroup>
-            <TextField
-              variant="outlined"
-              label="Nome"
-              id="nome"
-              name="nome"
-              value={values.nome}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={typeof errors.nome !== 'undefined'}
-            />
-              {typeof errors.nome !== 'undefined' && <FormHelperText>{errors.nome}</FormHelperText>}
-            </FormGroup>
-              </Grid>
-
-              <Grid item xs={6}>
-                <FormGroup>
-                  <TextField
-                    variant="outlined"
-                    label="Cognome"
-                    id="cognome"
-                    name="cognome"
-                    value={values.cognome}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={typeof errors.cognome !== 'undefined'}
-                  />
-                  {typeof errors.cognome !== 'undefined' && <FormHelperText>{errors.cognome}</FormHelperText>}
-                </FormGroup>
-              </Grid>
-
-              <Grid item xs={6}>
-                <FormGroup>
-                  <TextField
-                    variant="outlined"
-                    label="Email"
-                    id="email"
-                    name="email"
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={typeof errors.email !== 'undefined'}
-                  />
-                  {typeof errors.email !== 'undefined' && <FormHelperText>{errors.email}</FormHelperText>}
-                </FormGroup>
-              </Grid>
+              <Grid item xs={6}><MyInputField name={'nome'} label={'Nome'} type={'text'}/></Grid>
+              <Grid item xs={6}><MyInputField name={'cognome'} label={'Cognome'} type={'text'}/></Grid>
+              <Grid item xs={6}><MyInputField name={'email'} label={'Email'} type={'text'}/></Grid>
 
               <Grid item xs={6}>
                 <FormGroup>
@@ -179,21 +119,7 @@ const MainForm = () => {
                 </FormControl>
               </Grid>
 
-            <Grid item xs={6}>
-              <FormGroup>
-              <TextField
-                variant="outlined"
-                label="Cellulare"
-                id="cellulare"
-                name="cellulare"
-                value={values.cellulare}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={typeof errors.cellulare !== 'undefined'}
-              />
-              {typeof errors.cellulare !== 'undefined' && <FormHelperText>{errors.cellulare}</FormHelperText>}
-            </FormGroup>
-          </Grid>
+            <Grid item xs={6}><MyInputField name={'cellulare'} label={'Cellulare'} type={'text'}/></Grid>
 
               <Grid item xs={6}>
                 <FormControl variant="outlined" style={{width: '100%'}}>
@@ -239,54 +165,9 @@ const MainForm = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={6}>
-                <FormGroup>
-                  <TextField
-                    variant="outlined"
-                    label="Città"
-                    id="citta"
-                    name="citta"
-                    value={values.citta}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={typeof errors.citta !== 'undefined'}
-                  />
-                  {typeof errors.citta !== 'undefined' && <FormHelperText>{errors.citta}</FormHelperText>}
-                </FormGroup>
-              </Grid>
-
-              <Grid item xs={6}>
-                <FormGroup>
-                  <TextField
-                    variant="outlined"
-                    label="CAP"
-                    id="cap"
-                    name="cap"
-                    value={values.cap}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={typeof errors.cap !== 'undefined'}
-                  />
-                  {typeof errors.cap !== 'undefined' && <FormHelperText>{errors.cap}</FormHelperText>}
-                </FormGroup>
-              </Grid>
-
-              <Grid item xs={12}>
-                <FormGroup>
-                  <TextField
-                    type="date"
-                    variant="outlined"
-                    label=""
-                    id="data_nascita"
-                    name="data_nascita"
-                    value={values.data_nascita}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={typeof errors.data_nascita !== 'undefined'}
-                  />
-                  {typeof errors.data_nascita !== 'undefined' && <FormHelperText>{errors.data_nascita}</FormHelperText>}
-                </FormGroup>
-              </Grid>
+              <Grid item xs={6}><MyInputField name={'citta'} label={'Città'} type={'text'}/></Grid>
+              <Grid item xs={6}><MyInputField name={'cap'} label={'CAP'} type={'text'}/></Grid>
+              <Grid item xs={12}><MyInputField name={'data_nascita'} label={''} type={'date'}/></Grid>
 
               <Grid item xs={12} style={{paddingBottom:'2px'}}>
                 <FormControlLabel
@@ -333,9 +214,7 @@ const MainForm = () => {
               </Grid>
 
               <Grid item xs={12}>
-                <Button type="submit" variant="contained" color="primary" fullWidth>
-                  Submit
-                </Button>
+                <Button type="submit" variant="contained" color="primary" fullWidth>Submit</Button>
               </Grid>
             </Grid>
           </Form>
